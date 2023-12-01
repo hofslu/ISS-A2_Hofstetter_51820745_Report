@@ -1,4 +1,14 @@
-#
+# Assignment 2
+
+by Lukas Hofstetter - 51820745
+
+```
+⚠️⚠️⚠️ One-click-coopy version hosted on: ⚠️⚠️⚠️
+```
+
+```
+https://github.com/hofslu/ISS-A2_Hofstetter_51820745_Report/blob/main/A2_Hofstetter_51820745_Report.md
+```
 
 ## Task 1
 
@@ -13,7 +23,7 @@ SELECT ?film WHERE {
 }
 ```
 
-![Q1](/images/Q1.png)
+<img src='./images/Q1.png'>
 
 #### Q2: Return all films with their title
 
@@ -30,7 +40,7 @@ ASK WHERE {
 }
 ```
 
-![Q3](/images/Q3.png)
+<img src='./images/Q3.png'>
 
 #### Q4: Is there a film named “Dune” released before 1984?
 
@@ -49,7 +59,7 @@ DESCRIBE ?film WHERE {
 }
 ```
 
-![Q5](/images/Q5.png)
+<img src='./images/Q5.png'>
 
 #### Q6: Give me all information about actors which are playing in “Dune” released in 1984
 
@@ -68,11 +78,11 @@ CONSTRUCT {
 }
 ```
 
-![Q7](/images/Q7.png)
+<img src='./images/Q7.png'>
 
 #### Q8: Return all actors and directors who know each other from movies
 
-#### Q9
+#### Q9: Constructing playedInGenre Relationship
 
 ```sql
 PREFIX ex: <http://semantics.id/ns/example/film#>
@@ -85,7 +95,7 @@ CONSTRUCT {
 }
 ```
 
-![Q9](/images/Q9.png)
+<img src='./images/Q9.png'>
 
 ### FILTER queries – please implement one of these queries and additionally build a query of your own with code Q13
 
@@ -102,11 +112,13 @@ SELECT ?studio ?date WHERE {
 }
 ```
 
+<img src='./images/Q10.png'>
+
 #### Q11: Select unique name of actors who play in movies between 2014 and 2020
 
 #### Q12: Select name of actors who play in movies released after 2016 and with title containing string “Beauty”
 
-### Q13
+### Q13 Actors in Family Genre Films Born After 1980
 
 ```sql
 PREFIX ex: <http://semantics.id/ns/example/film#>
@@ -121,7 +133,7 @@ SELECT ?actorName ?birthdate WHERE {
 }
 ```
 
-![Q13](/images/Q13.png)
+<img src='./images/Q13.png'>
 
 ### ORDER and GROUP queries – please implement one of these queries and additionally build a query of your own with code Q16
 
@@ -140,11 +152,11 @@ SELECT DISTINCT ?actorName ?actor ?birthdate WHERE {
 ORDER BY ?birthdate
 ```
 
-![Q14](/images/Q14.png)
+<img src='./images/Q14.png'>
 
 #### Q15: Count the average number of ScriptWriters involved in each movie!
 
-#### Q16
+#### Q16 Count Films per Actor
 
 ```sql
 PREFIX ex: <http://semantics.id/ns/example/film#>
@@ -155,7 +167,7 @@ SELECT ?actor (COUNT(?film) AS ?numberOfFilms) WHERE {
 ORDER BY DESC(?numberOfFilms)
 ```
 
-![Q16](/images/Q16.png)
+<img src='./images/Q16.png'>
 
 ### UNION queries – please implement this query without utilizing inference mechanisms:
 
@@ -180,7 +192,7 @@ SELECT ?personName ?movieTitle WHERE {
 ORDER BY ?personName
 ```
 
-![Q17](/images/Q17.png)
+<img src='./images/Q17.png'>
 
 ## Task 2
 
@@ -199,7 +211,7 @@ SELECT (COUNT(?movie) AS ?numberOfMovies) WHERE {
 }
 ```
 
-![Q18](/images/Q18.png)
+<img src='./images/Q18.png'>
 
 #### Q19: Find all movies released after year 2000.
 
@@ -218,8 +230,8 @@ ORDER BY ?date
 LIMIT 10
 ```
 
-![Q19](/images/Q19_asc.png)
-![Q19](/images/Q19_desc.png)
+<img src='./images/Q19_asc.png'>
+<img src='./images/Q19_desc.png'>
 
 #### Q20: Find all movies directed by Steven Spielberg where Tom Hanks is not playing
 
@@ -234,13 +246,13 @@ SELECT ?movie WHERE {
 }
 ```
 
-![Q20](/images/Q20.png)
+<img src='./images/Q20.png'>
 
 ### Additional Querries
 
 Additionally, please propose and implement 2 complex queries of your own including (any combination of) FILTER, ORDER, GROUP, UNION. Name these Q21 and Q22
 
-#### Q21
+#### Q21 Count of Philosophers by Era (with More Than One Philosopher)
 
 ```sql
 PREFIX dbo: <http://dbpedia.org/ontology/>
@@ -253,9 +265,9 @@ HAVING (COUNT(?philosopher) > 1)
 ORDER BY DESC(?numberOfPhilosophers)
 ```
 
-![Q21](/images/Q21.png)
+<img src='./images/Q21.png'>
 
-#### Q22
+#### Q22 Analysis of International Collaboration in Space Missions Post-2000
 
 ```sql
 PREFIX dbo: <http://dbpedia.org/ontology/>
@@ -290,11 +302,13 @@ HAVING (COUNT(DISTINCT ?astronautNationality) >= 0)
 ORDER BY DESC(?missionYear)
 ```
 
-![Q22](/images/Q22.png)
+<img src='./images/Q22.png'>
 
 ## Task 3
 
 ### Q23: RDFS Domain Entailment
+
+In Q23, we explore the concept of RDFS Domain Entailment. This entailment pattern is based on the idea that if a property has a defined domain, any resource that has this property implies that the resource is an instance of the domain class. For instance, if a property ex:hasPerformer is defined with the domain ex:Artwork, then any subject with this property can be inferred to be an instance of ex:Artwork. This query demonstrates how inference can extend the understanding of data, revealing implicit class memberships that are not explicitly stated but are logically consistent with the ontology's structure.
 
 ```sql
 PREFIX ex: <http://semantics.id/ns/example/film#>
@@ -304,16 +318,55 @@ SELECT ?subject WHERE {
 }
 ```
 
-![Q23](/images/Q23_NI.png)
-![Q23](/images/Q23_I.png)
+Without Inference Enabled: The query will return ?artwork that has a hasPerformer relationship without considering the class hierarchy. It means if some instances are not explicitly typed as Artwork but have a hasPerformer relationship, they may not be returned.
+<img src='./images/Q23_NI.png'>
+
+With Inference Enabled: This query will return all ?artwork that is related to ?performer through ex:hasPerformer. The inference will recognize that any ?artwork with a hasPerformer relationship is an instance of Artwork or its subclasses, even if it's not explicitly typed as such.
+<img src='./images/Q23_I.png'>
 
 ### Q24: RDFS Sub-Property Entailment
 
-```sql
+Q24 is centered around the RDFS Sub-Property Entailment. In this pattern, if a property (say ex:hasLeadActor) is defined as a sub-property of another property (ex:hasActor), then all instances of the sub-property are also inferred to be instances of the super-property. This allows us to query for the super-property and retrieve results that include its sub-properties. The query showcases how this entailment enriches query results by capturing relationships that are not explicitly stated but are inherent in the ontology's property hierarchy
 
+Therefor first a SubProperty needed to be created:
+
+```sql
+PREFIX ex: <http://semantics.id/ns/example/film#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+INSERT DATA {
+    ex:hasLeadActor rdfs:subPropertyOf ex:hasActor .
+}
 ```
 
+and an instance added:
+
+```sql
+PREFIX ex: <http://semantics.id/ns/example/film#>
+
+INSERT DATA {
+    ex:film_1 ex:hasLeadActor ex:zendaya .
+}
+```
+
+to check with:
+
+```sql
+PREFIX ex: <http://semantics.id/ns/example/film#>
+
+SELECT ?film ?actor WHERE {
+    ?film ex:hasActor ?actor .
+}
+```
+
+Without Inference Enabled: The query will not include :zendaya for #film_1.
+<img src='./images/Q24_NI.png'>
+With Inference Enabled: The query returns #film_1 and :zendaya among other films and actors, showing the entailment from ex:hasLeadActor to ex:hasActor.
+<img src='./images/Q24_I.png'>
+
 ### Q25: OWL Class Hierarchy Entailment
+
+Q25 focuses on demonstrating OWL Class Hierarchy Entailment. This entails that instances of a subclass are also considered instances of its superclass. For instance, if ex:Actor is a subclass of ex:Performer, then all instances of ex:Actor are also inferred to be instances of ex:Performer. Our query illustrates this principle by selecting instances of a superclass and revealing how, with inference, it includes instances of its subclasses. This showcases the power of OWL reasoning in revealing implicit instance relationships based on class hierarchies.
 
 ```sql
 PREFIX ex: <http://semantics.id/ns/example/film#>
@@ -323,5 +376,7 @@ SELECT ?instance WHERE {
 }
 ```
 
-![Q25](/images/Q25_NI.png)
-![Q25](/images/Q25_I.png)
+Without Inference Enabled: The query will return only the direct instances of ex:Performer and not the instances of its subclasses (such as ex:Actor).
+<img src='./images/Q25_NI.png'>
+With Inference Enabled: This query will return instances of ex:Performer and all of its subclasses (like ex:Actor). It illustrates how class hierarchy reasoning includes instances of subclasses under the superclass.
+<img src='./images/Q25_I.png'>
