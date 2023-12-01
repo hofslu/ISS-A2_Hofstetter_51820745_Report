@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>A2_Hofstetter_51820745_Report.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="assignment-2">Assignment 2</h1>
+<p>by Lukas Hofstetter - 51820745</p>
+<pre class="hljs"><code><div>⚠️⚠️⚠️ One-click-coopy version hosted on: ⚠️⚠️⚠️
+</div></code></pre>
+<pre class="hljs"><code><div>https://github.com/hofslu/ISS-A2_Hofstetter_51820745_Report/blob/main/A2_Hofstetter_51820745_Report.md
+</div></code></pre>
+<h2 id="task-1">Task 1</h2>
+<h3 id="select-queries-%E2%80%93-please-implement-one-of-these-queries">SELECT queries – please implement one of these queries:</h3>
+<h4 id="q1-return-all-films">Q1: Return all films</h4>
+<pre class="hljs"><code><div>PREFIX : &lt;http://semantics.id/ns/example/film<span class="hljs-comment">#&gt;</span>
+<span class="hljs-keyword">SELECT</span> ?film <span class="hljs-keyword">WHERE</span> {
+    ?film a :Film .
+}
+</div></code></pre>
+<img src='./images/Q1.png'>
+<h4 id="q2-return-all-films-with-their-title">Q2: Return all films with their title</h4>
+<h3 id="ask-queries-%E2%80%93-please-implement-one-of-these-queries">ASK queries – please implement one of these queries:</h3>
+<h4 id="q3-is-there-a-film-named-dune">Q3: Is there a film named “Dune”?</h4>
+<pre class="hljs"><code><div>PREFIX : &lt;http://semantics.id/ns/example/film<span class="hljs-comment">#&gt;</span>
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema<span class="hljs-comment">#&gt;</span>
+ASK WHERE {
+    ?film a :Film ;
+          rdfs:label "Dune" .
+}
+</div></code></pre>
+<img src='./images/Q3.png'>
+<h4 id="q4-is-there-a-film-named-dune-released-before-1984">Q4: Is there a film named “Dune” released before 1984?</h4>
+<h3 id="describe-queries-%E2%80%93-please-implement-one-of-these-queries">DESCRIBE queries – please implement one of these queries:</h3>
+<h4 id="q5-give-me-all-information-about-dune-movie-released-in-1984">Q5: Give me all information about “Dune” movie released in 1984</h4>
+<pre class="hljs"><code><div>PREFIX : &lt;http://semantics.id/ns/example/film<span class="hljs-comment">#&gt;</span>
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema<span class="hljs-comment">#&gt;</span>
+PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema<span class="hljs-comment">#&gt;</span>
+<span class="hljs-keyword">DESCRIBE</span> ?film <span class="hljs-keyword">WHERE</span> {
+    ?film a :Film ;
+          rdfs:label "Dune" ;
+          :releaseYear "1984"^^xsd:integer .
+}
+</div></code></pre>
+<img src='./images/Q5.png'>
+<h4 id="q6-give-me-all-information-about-actors-which-are-playing-in-dune-released-in-1984">Q6: Give me all information about actors which are playing in “Dune” released in 1984</h4>
+<h3 id="sparql-construct-queries-%E2%80%93-please-implement-one-of-these-queries-and-additionally-build-a-query-of-your-own-with-code-q9">SPARQL CONSTRUCT queries – please implement one of these queries and additionally build a query of your own with code Q9</h3>
+<h4 id="q7-return-all-writers-and-the-film-studios-for-which-they-have-worked">Q7: Return all writers and the film studios for which they have worked</h4>
+<pre class="hljs"><code><div>PREFIX ex: &lt;http://semantics.id/ns/example/film<span class="hljs-comment">#&gt;</span>
+
+CONSTRUCT {
+    ?writer ex:hasWorkedFor ?studio .
+} WHERE {
+    ?film ex:hasScriptWriter ?writer .
+    ?film ex:hasFilmStudio ?studio .
+}
+</div></code></pre>
+<img src='./images/Q7.png'>
+<h4 id="q8-return-all-actors-and-directors-who-know-each-other-from-movies">Q8: Return all actors and directors who know each other from movies</h4>
+<h4 id="q9-constructing-playedingenre-relationship">Q9: Constructing playedInGenre Relationship</h4>
+<pre class="hljs"><code><div>PREFIX ex: &lt;http://semantics.id/ns/example/film<span class="hljs-comment">#&gt;</span>
+
+CONSTRUCT {
+    ?actor ex:playedInGenre ?genre .
+} WHERE {
+    ?film ex:hasActor ?actor ;
+          ex:hasGenre ?genre .
+}
+</div></code></pre>
+<img src='./images/Q9.png'>
+<h3 id="filter-queries-%E2%80%93-please-implement-one-of-these-queries-and-additionally-build-a-query-of-your-own-with-code-q13">FILTER queries – please implement one of these queries and additionally build a query of your own with code Q13</h3>
+<h4 id="q10-select-film-studios-that-were-established-after-1960">Q10: Select film studios that were established after 1960</h4>
+<pre class="hljs"><code><div>PREFIX ex: &lt;http://semantics.id/ns/example/film<span class="hljs-comment">#&gt;</span>
+PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema<span class="hljs-comment">#&gt;</span>
+
+<span class="hljs-keyword">SELECT</span> ?studio ?<span class="hljs-built_in">date</span> <span class="hljs-keyword">WHERE</span> {
+    ?studio a ex:FilmStudio ;
+            ex:establishedDate ?date .
+    FILTER (?date &gt;= "1960-12-31"^^xsd:date)
+}
+</div></code></pre>
+<img src='./images/Q10.png'>
+<h4 id="q11-select-unique-name-of-actors-who-play-in-movies-between-2014-and-2020">Q11: Select unique name of actors who play in movies between 2014 and 2020</h4>
+<h4 id="q12-select-name-of-actors-who-play-in-movies-released-after-2016-and-with-title-containing-string-beauty">Q12: Select name of actors who play in movies released after 2016 and with title containing string “Beauty”</h4>
+<h3 id="q13-actors-in-family-genre-films-born-after-1980">Q13 Actors in Family Genre Films Born After 1980</h3>
+<pre class="hljs"><code><div>PREFIX ex: &lt;http://semantics.id/ns/example/film<span class="hljs-comment">#&gt;</span>
+PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema<span class="hljs-comment">#&gt;</span>
+
+<span class="hljs-keyword">SELECT</span> ?actorName ?birthdate <span class="hljs-keyword">WHERE</span> {
+    ?film ex:hasActor ?actor ;
+          ex:hasGenre ex:genre_family .
+    ?actor ex:fullName ?actorName ;
+           ex:dateOfBirth ?birthdate .
+    FILTER (?birthdate &gt; "1980-01-01"^^xsd:date)
+}
+</div></code></pre>
+<img src='./images/Q13.png'>
+<h3 id="order-and-group-queries-%E2%80%93-please-implement-one-of-these-queries-and-additionally-build-a-query-of-your-own-with-code-q16">ORDER and GROUP queries – please implement one of these queries and additionally build a query of your own with code Q16</h3>
+<h4 id="q14-select-name-of-actors-who-plays-in-movies-ordered-by-birthdate-ascending">Q14: Select name of actors who plays in movies ordered by birthdate (ascending)</h4>
+<pre class="hljs"><code><div>PREFIX ex: &lt;http://semantics.id/ns/example/film<span class="hljs-comment">#&gt;</span>
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema<span class="hljs-comment">#&gt;</span>
+
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> ?actorName ?actor ?birthdate <span class="hljs-keyword">WHERE</span> {
+    ?film ex:hasActor ?actor .
+    ?actor a ex:Actor ;
+           ex:dateOfBirth ?birthdate ;
+           ex:fullName ?actorName .
+}
+ORDER BY ?birthdate
+</div></code></pre>
+<img src='./images/Q14.png'>
+<h4 id="q15-count-the-average-number-of-scriptwriters-involved-in-each-movie">Q15: Count the average number of ScriptWriters involved in each movie!</h4>
+<h4 id="q16-count-films-per-actor">Q16 Count Films per Actor</h4>
+<pre class="hljs"><code><div>PREFIX ex: &lt;http://semantics.id/ns/example/film<span class="hljs-comment">#&gt;</span>
+
+<span class="hljs-keyword">SELECT</span> ?actor (<span class="hljs-keyword">COUNT</span>(?film) <span class="hljs-keyword">AS</span> ?numberOfFilms) <span class="hljs-keyword">WHERE</span> {
+    ?film ex:hasActor ?actor .
+} <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> ?actor
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> <span class="hljs-keyword">DESC</span>(?numberOfFilms)
+</div></code></pre>
+<img src='./images/Q16.png'>
+<h3 id="union-queries-%E2%80%93-please-implement-this-query-without-utilizing-inference-mechanisms">UNION queries – please implement this query without utilizing inference mechanisms:</h3>
+<h4 id="q17-list-all-actors-and-crews-together-with-the-title-of-movies-that-they-are-involved-in-ordered-by-their-name">Q17: List all actors and crews together with the title of movies that they are involved in, ordered by their name.</h4>
+<pre class="hljs"><code><div>PREFIX ex: &lt;http://semantics.id/ns/example/film<span class="hljs-comment">#&gt;</span>
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema<span class="hljs-comment">#&gt;</span>
+
+<span class="hljs-keyword">SELECT</span> ?personName ?movieTitle <span class="hljs-keyword">WHERE</span> {
+    {
+        ?film ex:hasActor ?person .
+        ?person ex:fullName ?personName .
+    }
+    <span class="hljs-keyword">UNION</span>
+    {
+        ?film ex:hasCrew ?person .
+        ?person ex:fullName ?personName .
+    }
+    ?film rdfs:label ?movieTitle .
+}
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> ?personName
+</div></code></pre>
+<img src='./images/Q17.png'>
+<h2 id="task-2">Task 2</h2>
+<h3 id="dpedia-querries">dpedia Querries</h3>
+<p>http://dbpedia.org/sparql</p>
+<h4 id="q18-how-many-south-korean-movies-are-listed-in-dbpedia">Q18: How many South Korean movies are listed in DBPedia?</h4>
+<pre class="hljs"><code><div>PREFIX dbo: &lt;http://dbpedia.org/ontology/&gt;
+
+<span class="hljs-keyword">SELECT</span> (<span class="hljs-keyword">COUNT</span>(?movie) <span class="hljs-keyword">AS</span> ?numberOfMovies) <span class="hljs-keyword">WHERE</span> {
+    ?movie a dbo:Film ;
+           dbo:country dbr:South_Korea .
+}
+</div></code></pre>
+<img src='./images/Q18.png'>
+<h4 id="q19-find-all-movies-released-after-year-2000">Q19: Find all movies released after year 2000.</h4>
+<pre class="hljs"><code><div>PREFIX dbo: &lt;http://dbpedia.org/ontology/&gt;
+PREFIX dbr: &lt;http://dbpedia.org/resource/&gt;
+
+<span class="hljs-keyword">SELECT</span> ?movie ?<span class="hljs-built_in">date</span>
+<span class="hljs-keyword">WHERE</span> {
+  ?movie a dbo:Film ;
+         dbo:releaseDate ?date .
+  FILTER (YEAR(?date) &gt; 2000)
+}
+ORDER BY ?date
+<span class="hljs-comment">-- ORDER BY DESC(?date)</span>
+LIMIT 10
+</div></code></pre>
+<img src='./images/Q19_asc.png'>
+<img src='./images/Q19_desc.png'>
+<h4 id="q20-find-all-movies-directed-by-steven-spielberg-where-tom-hanks-is-not-playing">Q20: Find all movies directed by Steven Spielberg where Tom Hanks is not playing</h4>
+<pre class="hljs"><code><div>PREFIX dbo: &lt;http://dbpedia.org/ontology/&gt;
+PREFIX dbr: &lt;http://dbpedia.org/resource/&gt;
+
+<span class="hljs-keyword">SELECT</span> ?movie <span class="hljs-keyword">WHERE</span> {
+    ?movie a dbo:Film ;
+           dbo:director dbr:Steven_Spielberg .
+    MINUS { ?movie dbo:starring dbr:Tom_Hanks }
+}
+</div></code></pre>
+<img src='./images/Q20.png'>
+<h3 id="additional-querries">Additional Querries</h3>
+<p>Additionally, please propose and implement 2 complex queries of your own including (any combination of) FILTER, ORDER, GROUP, UNION. Name these Q21 and Q22</p>
+<h4 id="q21-count-of-philosophers-by-era-with-more-than-one-philosopher">Q21 Count of Philosophers by Era (with More Than One Philosopher)</h4>
+<pre class="hljs"><code><div>PREFIX dbo: &lt;http://dbpedia.org/ontology/&gt;
+
+<span class="hljs-keyword">SELECT</span> ?era (<span class="hljs-keyword">COUNT</span>(?philosopher) <span class="hljs-keyword">AS</span> ?numberOfPhilosophers) <span class="hljs-keyword">WHERE</span> {
+    ?philosopher a dbo:Philosopher ;
+                 dbo:era ?era .
+} GROUP BY ?era
+HAVING (COUNT(?philosopher) &gt; 1)
+ORDER BY DESC(?numberOfPhilosophers)
+</div></code></pre>
+<img src='./images/Q21.png'>
+<h4 id="q22-analysis-of-international-collaboration-in-space-missions-post-2000">Q22 Analysis of International Collaboration in Space Missions Post-2000</h4>
+<pre class="hljs"><code><div>PREFIX dbo: &lt;http://dbpedia.org/ontology/&gt;
+PREFIX dbp: &lt;http://dbpedia.org/property/&gt;
+PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema<span class="hljs-comment">#&gt;</span>
+
+<span class="hljs-keyword">SELECT</span> ?missionType ?missionCategory (<span class="hljs-keyword">YEAR</span>(<span class="hljs-keyword">SAMPLE</span>(?missionDate)) <span class="hljs-keyword">AS</span> ?missionYear) (<span class="hljs-keyword">COUNT</span>(<span class="hljs-keyword">DISTINCT</span> ?astronautNationality) <span class="hljs-keyword">AS</span> ?numberOfCountriesOrAgencies) ?mission <span class="hljs-keyword">WHERE</span> {
+    {
+        ?astronaut a dbo:Astronaut .
+        ?mission a dbo:SpaceMission ;
+                 dbp:missionType ?missionType ;
+                 dbo:launchDate ?missionDate .
+        ?astronaut dbo:mission ?mission .
+        OPTIONAL { ?astronaut dbo:nationality ?nation . }
+        OPTIONAL { ?astronaut dbo:employer ?agency . }
+        BIND(COALESCE(?nation, ?agency) AS ?astronautNationality)
+        FILTER (YEAR(?missionDate) &gt; 2000)
+        BIND("Crewed" AS ?missionCategory)
+    }
+    UNION
+    {
+        ?mission a dbo:SpaceMission ;
+                 dbp:missionType ?missionType ;
+                 dbo:launchDate ?missionDate .
+        FILTER NOT EXISTS { ?mission dbo:crew ?crew }
+        FILTER (YEAR(?missionDate) &gt; 2000)
+        BIND("Uncrewed" AS ?missionCategory)
+    }
+}
+GROUP BY ?missionType ?mission ?missionCategory
+HAVING (COUNT(DISTINCT ?astronautNationality) &gt;= 0)
+ORDER BY DESC(?missionYear)
+</div></code></pre>
+<img src='./images/Q22.png'>
+<h2 id="task-3">Task 3</h2>
+<h3 id="q23-rdfs-domain-entailment">Q23: RDFS Domain Entailment</h3>
+<p>In Q23, we explore the concept of RDFS Domain Entailment. This entailment pattern is based on the idea that if a property has a defined domain, any resource that has this property implies that the resource is an instance of the domain class. For instance, if a property ex:hasPerformer is defined with the domain ex:Artwork, then any subject with this property can be inferred to be an instance of ex:Artwork. This query demonstrates how inference can extend the understanding of data, revealing implicit class memberships that are not explicitly stated but are logically consistent with the ontology's structure.</p>
+<pre class="hljs"><code><div>PREFIX ex: &lt;http://semantics.id/ns/example/film<span class="hljs-comment">#&gt;</span>
+
+<span class="hljs-keyword">SELECT</span> ?subject <span class="hljs-keyword">WHERE</span> {
+    ?subject ex:hasPerformer ?crew .
+}
+</div></code></pre>
+<p>Without Inference Enabled: The query will return ?artwork that has a hasPerformer relationship without considering the class hierarchy. It means if some instances are not explicitly typed as Artwork but have a hasPerformer relationship, they may not be returned.
+<img src='./images/Q23_NI.png'></p>
+<p>With Inference Enabled: This query will return all ?artwork that is related to ?performer through ex:hasPerformer. The inference will recognize that any ?artwork with a hasPerformer relationship is an instance of Artwork or its subclasses, even if it's not explicitly typed as such.
+<img src='./images/Q23_I.png'></p>
+<h3 id="q24-rdfs-sub-property-entailment">Q24: RDFS Sub-Property Entailment</h3>
+<p>Q24 is centered around the RDFS Sub-Property Entailment. In this pattern, if a property (say ex:hasLeadActor) is defined as a sub-property of another property (ex:hasActor), then all instances of the sub-property are also inferred to be instances of the super-property. This allows us to query for the super-property and retrieve results that include its sub-properties. The query showcases how this entailment enriches query results by capturing relationships that are not explicitly stated but are inherent in the ontology's property hierarchy</p>
+<p>Therefor first a SubProperty needed to be created:</p>
+<pre class="hljs"><code><div>PREFIX ex: &lt;http://semantics.id/ns/example/film<span class="hljs-comment">#&gt;</span>
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema<span class="hljs-comment">#&gt;</span>
+
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">DATA</span> {
+    ex:hasLeadActor rdfs:subPropertyOf ex:hasActor .
+}
+</div></code></pre>
+<p>and an instance added:</p>
+<pre class="hljs"><code><div>PREFIX ex: &lt;http://semantics.id/ns/example/film<span class="hljs-comment">#&gt;</span>
+
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">DATA</span> {
+    ex:film_1 ex:hasLeadActor ex:zendaya .
+}
+</div></code></pre>
+<p>to check with:</p>
+<pre class="hljs"><code><div>PREFIX ex: &lt;http://semantics.id/ns/example/film<span class="hljs-comment">#&gt;</span>
+
+<span class="hljs-keyword">SELECT</span> ?film ?actor <span class="hljs-keyword">WHERE</span> {
+    ?film ex:hasActor ?actor .
+}
+</div></code></pre>
+<p>Without Inference Enabled: The query will not include :zendaya for #film_1.
+<img src='./images/Q24_NI.png'>
+With Inference Enabled: The query returns #film_1 and :zendaya among other films and actors, showing the entailment from ex:hasLeadActor to ex:hasActor.
+<img src='./images/Q24_I.png'></p>
+<h3 id="q25-owl-class-hierarchy-entailment">Q25: OWL Class Hierarchy Entailment</h3>
+<p>Q25 focuses on demonstrating OWL Class Hierarchy Entailment. This entails that instances of a subclass are also considered instances of its superclass. For instance, if ex:Actor is a subclass of ex:Performer, then all instances of ex:Actor are also inferred to be instances of ex:Performer. Our query illustrates this principle by selecting instances of a superclass and revealing how, with inference, it includes instances of its subclasses. This showcases the power of OWL reasoning in revealing implicit instance relationships based on class hierarchies.</p>
+<pre class="hljs"><code><div>PREFIX ex: &lt;http://semantics.id/ns/example/film<span class="hljs-comment">#&gt;</span>
+
+<span class="hljs-keyword">SELECT</span> ?<span class="hljs-keyword">instance</span> <span class="hljs-keyword">WHERE</span> {
+    ?<span class="hljs-keyword">instance</span> a ex:Performer .
+}
+</div></code></pre>
+<p>Without Inference Enabled: The query will return only the direct instances of ex:Performer and not the instances of its subclasses (such as ex:Actor).
+<img src='./images/Q25_NI.png'>
+With Inference Enabled: This query will return instances of ex:Performer and all of its subclasses (like ex:Actor). It illustrates how class hierarchy reasoning includes instances of subclasses under the superclass.
+<img src='./images/Q25_I.png'></p>
+
+</body>
+</html>
